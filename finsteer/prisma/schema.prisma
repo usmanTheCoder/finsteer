@@ -1,0 +1,92 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             Int            @id @default(autoincrement())
+  email          String         @unique
+  passwordHash   String
+  name           String
+  accountsOwned  Account[]
+  transactions   Transaction[]
+  settings       Setting?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  @@map("users")
+}
+
+model Account {
+  id          Int            @id @default(autoincrement())
+  name        String
+  type        AccountType
+  description String?
+  balance     Decimal        @default(0.0)
+  owner       User           @relation(fields: [ownerId], references: [id])
+  ownerId     Int
+  transactions Transaction[]
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  @@map("accounts")
+}
+
+model Transaction {
+  id          Int            @id @default(autoincrement())
+  account     Account        @relation(fields: [accountId], references: [id])
+  accountId   Int
+  user        User           @relation(fields: [userId], references: [id])
+  userId      Int
+  type        TransactionType
+  amount      Decimal
+  description String?
+  date        DateTime       @default(now())
+  category    TransactionCategory?
+
+  @@map("transactions")
+}
+
+model Setting {
+  id                 Int      @id @default(autoincrement())
+  user               User     @relation(fields: [userId], references: [id])
+  userId             Int      @unique
+  currency           String   @default("USD")
+  dateFormat         String   @default("yyyy-MM-dd")
+  defaultAccountType AccountType
+  defaultTransactionType TransactionType
+
+  @@map("settings")
+}
+
+enum AccountType {
+  CHECKING
+  SAVINGS
+  CREDIT_CARD
+  LOAN
+  INVESTMENT
+  OTHER
+}
+
+enum TransactionType {
+  INCOME
+  EXPENSE
+  TRANSFER
+}
+
+enum TransactionCategory {
+  RENT
+  UTILITIES
+  GROCERIES
+  DINING
+  TRANSPORTATION
+  ENTERTAINMENT
+  HEALTH
+  TRAVEL
+  SHOPPING
+  OTHER
+}
