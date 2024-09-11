@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@layer base {
+  html {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+.gradient-bg {
+  background: linear-gradient(
+    90deg,
+    rgba(48, 62, 170, 1) 0%,
+    rgba(36, 61, 113, 1) 100%
+  );
+}
+
+.gradient-text {
+  background: linear-gradient(
+    90deg,
+    rgba(48, 62, 170, 1) 0%,
+    rgba(36, 61, 113, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card {
+  @apply bg-white shadow-lg rounded-lg p-6;
+}
+
+.btn {
+  @apply bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition-colors duration-300;
+}
+
+.btn-danger {
+  @apply bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded transition-colors duration-300;
+}
+
+.input {
+  @apply border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+}
+
+.loader {
+  @apply border-4 border-blue-500 border-solid rounded-full animate-spin;
+}
+
+.error {
+  @apply text-red-500 font-semibold;
+}
+
+.success {
+  @apply text-green-500 font-semibold;
+}
+
+.fade-in {
+  @apply animate-fade-in;
+}
+
+.fade-out {
+  @apply animate-fade-out;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.slide-in {
+  @apply animate-slide-in;
+}
+
+.slide-out {
+  @apply animate-slide-out;
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
