@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <defs>
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366F1" />
+      <stop offset="100%" stop-color="#8B5CF6" />
+    </linearGradient>
+    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EC4899" />
+      <stop offset="100%" stop-color="#DB2777" />
+    </linearGradient>
+    <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="500" height="500" fill="#F3F4F6" />
+  <circle cx="250" cy="250" r="200" fill="url(#gradient1)" />
+  <path
+    d="M300 150a50 50 0 0 0-100 0h100zm0 200a50 50 0 1 0 0-100 50 50 0 0 0 0 100zM350 200v100M150 200v100"
+    fill="none"
+    stroke="#FFFFFF"
+    stroke-width="20"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <circle cx="150" cy="250" r="30" fill="url(#gradient2)" />
+  <circle cx="350" cy="250" r="30" fill="url(#gradient3)" />
+  <animateTransform
+    attributeName="transform"
+    type="rotate"
+    from="0 250 250"
+    to="360 250 250"
+    dur="10s"
+    repeatCount="indefinite"
+  />
+</svg>
